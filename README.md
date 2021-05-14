@@ -1,6 +1,8 @@
 # Lightsail + Django の構築手順
 LightsailはAWSにおけるEC2+RDS+ElasticIP+S3+Route53などの一連のサービスをセットにして
 使いやすくしたもの。
+AWSにおけるDjangoの構成イメージ 
+https://docs.google.com/presentation/d/1csa31FCjwntZH6QVCV5a7PAXEOiBqVy-AQYtZhd3eqI/edit#slide=id.gd66254ea13_0_0
 
 ## 必要な前提知識
 Pythonを使った開発、Djangoのプロジェクト作成や開発サーバーを使った開発
