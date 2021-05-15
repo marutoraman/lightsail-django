@@ -74,8 +74,12 @@ viが起動するので、 ec2-user を# でコメントアウト<BR>
 web_admin ALL=(ALL) NOPASSWD:ALL を追加<BR>
 ※viは、i入力で編集モードになり、:wq入力で上書き保存する<BR>
 
-SSHからログオフして再度web_adminでログイン
-
+SSHからログオフして再度web_adminでログイン<BR>
+ec2-userを削除
+```
+sudo userdel -r ec2-user
+```
+ 
 #### gitのインストール
 ```
 sudo yum install git
