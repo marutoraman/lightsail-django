@@ -66,9 +66,9 @@ sudo cp -arp /home/ec2-user/.ssh /home/web_admin
 sudo chown -R web_admin /home/web_admin/.ssh
 sudo visudo -f /etc/sudoers.d/90-cloud-init-users
 ```
-viが起動するので、 ec2-user を# でコメントアウト　　
-web_admin ALL=(ALL) NOPASSWD:ALL を追加
-※viは、i入力で編集モードになり、:wq入力で上書き保存する
+viが起動するので、 ec2-user を# でコメントアウト<BR>
+web_admin ALL=(ALL) NOPASSWD:ALL を追加<BR>
+※viは、i入力で編集モードになり、:wq入力で上書き保存する<BR>
 
 SSHからログオフして再度web_adminでログイン
 
