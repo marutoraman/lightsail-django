@@ -183,13 +183,13 @@ sudo vi /etc/nginx/nginx.conf
 ```
 
 以下を変更
-httpセクション内
+http > serverセクション内
 ```
 　server_name：静的IPアドレスを入力
 ```
 
 以下を追記
-httpセクション内
+http > serverセクション内
 ```
  　location /static {
        alias /usr/share/nginx/html/static;
