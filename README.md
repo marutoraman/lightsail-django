@@ -208,9 +208,9 @@ http > serverセクション内
    }
   ```
 
-#### nginxのリロード
+#### サーバー再起動
 ```
-sudo nginx -s reload
+sudo reboot
 ```
 
 #### gunicron起動
