@@ -71,32 +71,6 @@ LinuxにSSH接続して以下の作業を実施する。
 
 #### 再起動で時刻を反映(後で行っても良い)
 `sudo reboot`
-
-#### 操作用のアカウント作成
-デフォルトのEC2を使用するとセキュリティ上よろしくないため、任意のユーザーアカウントを作成する。<BR>
-以降では、アカウント名を「web_admin」とした場合の例を記述しますので、それ以外の名称にしたい場合は<BR>
-コマンドのweb_adminの箇所を全て置き換えてください。<BR>
-※ただし、ec2-userをログイン不可にすると、LightsailのSSH画面から接続できなくなるため<BR>
-LightsailのSSH画面から接続したい場合（デスクトップからSSHで接続するのが難しい場合など）は<BR>
-既定のec2-userのまま作業を進めてください。<BR>
-その場合は「操作用のアカウント作成」の作業は全てスキップしてください<BR>
-(その場合は以降はweb_adminの箇所をec2-userに読み替えてください)
-
-```
-sudo useradd web_admin
-sudo cp -arp /home/ec2-user/.ssh /home/web_admin
-sudo chown -R web_admin /home/web_admin/.ssh
-sudo visudo -f /etc/sudoers.d/90-cloud-init-users
-```
-viが起動するので、 ec2-user を# でコメントアウト<BR>
-web_admin ALL=(ALL) NOPASSWD:ALL を追加<BR>
-※viは、i入力で編集モードになり、:wq入力で上書き保存する<BR>
-
-SSHからログオフして再度web_adminでログイン<BR>
-ec2-userを削除
-```
-sudo userdel -r ec2-user
-```
  
 #### gitのインストール
 ```
@@ -169,8 +143,8 @@ sudo systemctl enable nginx.service
 sudo mkdir -p /usr/share/nginx/html/static
 sudo mkdir -p /usr/share/nginx/html/media
 
-sudo chown -R web_admin /usr/share/nginx/html/static
-sudo chown -R web_admin /usr/share/nginx/html/media
+sudo chown -R ec2-user /usr/share/nginx/html/static
+sudo chown -R ec2-user /usr/share/nginx/html/media
 
 (Djangoプロジェクトルートにて)
 python manage.py collectstatic
