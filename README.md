@@ -156,7 +156,8 @@ python manage.py collectstatic
 sudo vi /etc/nginx/nginx.conf
 ```
 
-以下を変更
+以下を変更  
+i キーを入れると編集モードに変更されます。  
 http > serverセクション内
 ```
 　server_name：静的IPアドレスを入力
@@ -181,7 +182,9 @@ http > serverセクション内
        proxy_pass http://127.0.0.1:8000;
    }
   ```
-
+保存は、esc → :wq (コロン、w 、q)と入力
+ 
+ 
 #### サーバー再起動
 ```
 sudo reboot
