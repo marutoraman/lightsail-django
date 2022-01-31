@@ -43,12 +43,27 @@ DB:15ドル～
 ### Djangoのデータベース接続設定
 settings.pyのデータベース接続設定を変更する。
 ```
+ DATABASES = {
+    'default': {
         'NAME': <DB名>,　#既定ではdbmaster
         'USER': <DBユーザー名>,  #既定ではdbmasteruser
         'PASSWORD': <DBパスワード>,  #既定ではランダムに生成されたパスワード
         'HOST': <エンドポイント>, # 例：******.us-east-1.rds.amazonaws.com
+        'PORT': 3306,
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+            'charset': 'utf8mb4'
+        },
+    }
+}
 ```
-
+ 
+また、元々sqliteを使用していた場合は以下も行う
+```
+pip install mysqliclient
+pip freeze > requirements.txt
+``` 
+ 
 ### ネットワーキングの設定
 作成されたインスタンスを選択、ネットワーキングタブ
 パブリックIP→静的IPの作成からIPを設定。
