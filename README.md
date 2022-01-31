@@ -41,8 +41,9 @@ DB:15ドル～
 - エンドポイントの例： *******.us-east-1.rds.amazonaws.com
  
 ### Djangoのデータベース接続設定
-settings.pyのデータベース接続設定を変更する。
-```
+settings.pyのデータベース接続設定を変更する。<br>
+DATABSESの設定を以下のように変更し、lightsailに合わせて記述する。
+ ```
  DATABASES = {
     'default': {
         'NAME': <DB名>,　#既定ではdbmaster
@@ -63,6 +64,23 @@ settings.pyのデータベース接続設定を変更する。
 pip install mysqliclient
 pip freeze > requirements.txt
 ``` 
+ 
+### 静的ファイルの設定を変更
+settings.pyに以下を追記する
+ ```
+ if not os.environ.get("DEBUG"):
+    STATIC_ROOT='/usr/share/nginx/html/static'
+    MEDIA_ROOT='/usr/share/nginx/html/media'
+ else:
+    STATIC_ROOT = '/static'
+    MEDIA_ROOT = '/media'
+ ```
+
+### ALLOWED_HOSTSの変更
+以下の通り、パブリックIPを設定する
+ ```
+ALLOWED_HOSTS = ["インスタンスのパブリックIP"]
+ ```
  
 ### ネットワーキングの設定
 作成されたインスタンスを選択、ネットワーキングタブ
